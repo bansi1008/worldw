@@ -4,11 +4,12 @@
   background-color: var(--color-dark--1);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.form {
+.loginContainer {
   background-color: var(--color-dark--2);
   border-radius: 12px;
   padding: 3rem;
@@ -16,9 +17,30 @@
   max-width: 48rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  align-items: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   animation: slideUp 0.5s ease-out;
+}
+
+.loginContainer h3 {
+  color: var(--color-light--2);
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--color-dark--1);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-brand--2);
+  max-width: 90%;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 @keyframes slideUp {
@@ -58,6 +80,36 @@
   outline: none;
   border-color: var(--color-brand--2);
   background-color: var(--color-dark--0);
+}
+
+.google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 48rem;
+  margin-bottom: 1rem;
+}
+
+.google > div {
+  width: 100% !important;
+  max-width: 300px;
+}
+
+.google > div > div {
+  width: 100% !important;
+}
+
+.google > div > iframe {
+  scale: 1.2;
+  margin: 10px 0;
+}
+
+.or {
+  text-align: center;
+  color: var(--color-light--2);
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
 }
 
 /* Responsive Design */

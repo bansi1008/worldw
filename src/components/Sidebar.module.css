@@ -29,10 +29,12 @@
     flex-basis: auto;
     height: auto;
     min-height: 0;
+    max-height: 40rem;
     width: 100%;
     padding: 2rem;
     border-radius: 8px;
     margin-bottom: 2rem;
+    overflow-y: auto;
   }
 }
 

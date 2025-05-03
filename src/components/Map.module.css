@@ -8,16 +8,24 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+.map {
+  height: 100%;
+}
+
 @media (max-width: 48em) {
   .mapContainer {
-    height: 60vh;
+    height: 70vh;
     margin-bottom: 2rem;
+  }
+  
+  .map {
+    height: 100%;
   }
 }
 
 @media (max-width: 36em) {
   .mapContainer {
-    height: 50vh;
+    height: 60vh;
   }
 }
 

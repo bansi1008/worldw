@@ -18,22 +18,21 @@ function reducer(state, action) {
   }
 }
 
-const FAKE_USER = {
-  name: "Bansi",
-  email: "Bansi@example.com",
-  password: "qwerty",
-  avatar: "https://i.pravatar.cc/100?u=zz",
-};
-
 function AuthProvider({ children }) {
   const [{ user, isAuthenticated }, dispatch] = useReducer(
     reducer,
     initialState
   );
 
-  function login(email, password) {
-    if (email === FAKE_USER.email && password === FAKE_USER.password)
-      dispatch({ type: "login", payload: FAKE_USER });
+  function login(email, source = "password") {
+    console.log("Login called with source:", source);
+    const userData = {
+      name: source === "google-oauth" ? email.split("@")[0] : "Bansi",
+      email,
+      avatar: "https://i.pravatar.cc/100?u=zz",
+    };
+    console.log("Dispatching login with userData:", userData);
+    dispatch({ type: "login", payload: userData });
   }
 
   function logout() {
