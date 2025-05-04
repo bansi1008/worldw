@@ -16,6 +16,8 @@ import { useUrlPosition } from "../hooks/useUrlPosition";
 import Button from "./Button";
 
 function Map() {
+  // Fix for mobile: force map to recalculate size on mount and on resize/orientation change
+  const [leafletMap, setLeafletMap] = useState(null);
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState([40, 0]);
   const {
@@ -40,6 +42,23 @@ function Map() {
     [geolocationPosition]
   );
 
+  // Invalidate map size on mount and on resize/orientation change
+  useEffect(() => {
+    if (!leafletMap) return;
+    const handleResize = () => {
+      leafletMap.invalidateSize();
+    };
+    // Invalidate on mount
+    leafletMap.invalidateSize();
+    // Invalidate on resize/orientation change
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, [leafletMap]);
+
   return (
     <div className={styles.mapContainer}>
       {!geolocationPosition && (
@@ -53,6 +72,7 @@ function Map() {
         zoom={6}
         scrollWheelZoom={true}
         className={styles.map}
+        whenCreated={setLeafletMap}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

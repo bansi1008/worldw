@@ -14,7 +14,8 @@
   .app {
     padding: 1.6rem;
     flex-direction: column;
-    height: auto;
+    /* Keep height and min-height for mobile as well */
+    height: 100vh;
     min-height: 100vh;
     overflow-y: auto;
   }
